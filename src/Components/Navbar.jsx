@@ -1,16 +1,29 @@
-import React from 'react'
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import React, { useContext } from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import { AppContext } from '../Components/utils/global.context';
 
 const Navbar = () => {
+  const { state, changeTheme } = useContext(AppContext);
+
+  const handleThemeChange = () => {
+    const newTheme = state.theme === 'light' ? 'dark' : 'light';
+    changeTheme(newTheme);
+  };
 
   return (
     <nav>
-      {/* Aqui deberan agregar los liks correspondientes a las rutas definidas */}
-      {/* Deberan implementar ademas la logica para cambiar de Theme con el button */}
-      <button>Change theme</button>
+     <div className="wrapper">
+     <Outlet />
+      <p className="alumno">Marcela Ochoa</p>
+        <div className="links">
+          <Link to="/">Inicio</Link>
+          <Link to="/contacto">Contacto</Link>
+          <Link to="/favoritos">Favoritos</Link>
+          <button onClick={handleThemeChange}>Cambiar tema</button>
+          </div>
+      </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

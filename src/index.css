@@ -1,67 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #fafafa;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.favButton{
-  background-color: rgba(136, 136, 136, 0.116);
+
+.dark .favButton {
+  background: white;
+  color: #272727;
+}
+
+.dark .favButton:hover {
+  color: #fff;
+}
+
+.favButton {
+  background-color: #272727;
   padding: 10px;
   border: none;
   width: 100%;
   cursor: pointer;
+  color: white;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
 }
 
-h1{
+.favButton:hover {
+  background-color: #ab3dff;
+}
+
+.removeButton {
+  background-color: #ab3dff;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+h1 {
   text-align: center;
 }
 
-nav{
+nav {
   display: flex;
-  width: 80vw;
-  justify-content: flex-start;
+  width: auto;
+  justify-content: center;
   padding: 1rem;
+  gap: 0.25rem;
 }
 
-a{
+a {
+  display: flex;
+  align-items: center;
   color: #000;
   text-decoration: none;
   margin: 5px;
   cursor: pointer;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
 }
-a:hover{
-  color: rgb(136, 136, 136);
-} 
+a:hover {
+  color: #ab3dff;
+  background: #f4e9fc;
+}
+
+.dark a:hover {
+  color: #ab3dff;
+  background: #f4e9fc16;
+}
+
+.dark a {
+  color: white;
+}
 
 footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   text-align: center;
   padding: 2rem;
   position: relative;
   bottom: 0;
-  width: 90%;
+  width: auto;
   height: 40px;
   margin-top: 2rem;
 }
 
-footer > img{
+footer > .powered {
+  display: flex;
+}
+
+footer > .powered > img {
   width: 200px;
   margin: 0;
 }
-footer > p{
+footer > .powered > p {
   margin: 0;
   padding-top: 0.7rem;
 }
 
-form{
+footer > .redes {
+  display: flex;
+  justify-content: space-between;
+  width: 150px;
+}
+
+footer > .redes > .icono {
+  width: 30px;
+  height: 30px;
+}
+
+.dark > footer > .redes > img {
+  filter: invert(0);
+}
+
+.light > footer > .redes > img {
+  filter: invert(0.9);
+}
+
+form {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -70,40 +138,77 @@ form{
   margin: 0 auto;
 }
 
-.card{
+input {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #88888834;
+  margin-bottom: 0.5rem;
+}
+
+.dark .card {
+  background: #131313;
+}
+
+.card {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
   width: 200px;
-  padding: 0.5rem 0.5rem 0 0.5rem;
-  border: 0.5px solid rgb(136, 136, 136);
+  padding: 1em;
+  border: 0.5px solid #88888834;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+  box-shadow: 0px 2px 4px 0px rgba(13, 26, 38, 0.05);
+  color: #5c6670;
 }
 
-.card:hover{
-  border: 0.5px solid rgb(206, 217, 142);
+.card img {
+  width: 200px;
+  border-radius: 0.2rem;
 }
 
-.card-grid{
+.card-grid {
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
-  width: 90vw;
+  width: 80vw;
   height: auto;
   flex-wrap: wrap;
   margin: 0 auto;
 }
 
-table {
- border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    display: table;
-    border: 1px solid #ccc;
-
+/* if size desktop then use grid */
+@media (min-width: 768px) {
+  .card-grid {
+    max-width: 1440px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    width: 80vw;
+    height: auto;
+    margin: 0 auto;
+  }
 }
 
-td, th {
+.drDetails {
+  text-decoration: underline;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  display: table;
+  border: 1px solid #ccc;
+}
+
+td,
+th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
@@ -113,10 +218,76 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-.dark{
-  background-color: #12121296;
+.dark {
+  background-color: #1c1c1c;
   color: white;
 }
 .dark > a {
   color: white;
+}
+
+.contact-container {
+  text-align: center;
+}
+
+.form-button{
+  background-color: #28a165;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.form-container {
+  margin-bottom: 15px;
+}
+
+.error {
+  color: red;
+}
+
+nav > .wrapper {
+  display: flex;
+  max-width: 1440px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.alumno {
+  font-weight: 500;
+  font-size: 0.75rem;
+  background: rgb(52, 137, 139);
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .alumno {
+    display: none;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+}
+
+.links > button {
+  background-color: #32d42d;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  color: white;
+  margin-left: 0.5rem;
+}
+.form-container label {
+  margin-bottom: 10px; 
+}
+
+.form-container input {
+  margin-bottom: 10px;
 }
